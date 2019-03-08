@@ -4,7 +4,7 @@
 using namespace cv;
 
 int main(){
-    Mat meme = imread("data/hiddenmeme.jpg");
+    Mat meme = imread("data/hiddenmeme.png");
     
     if (meme.empty()){
         cout << "Go hide the meme first before unhiding it" << '\n';
@@ -17,6 +17,7 @@ int main(){
             f(k,3){
                 meme.at<Vec3b>(j, i).val[k]&=15;
                 meme.at<Vec3b>(j, i).val[k]<<=4;
+                // cout<<(ll)meme.at<Vec3b>(j, i).val[k]<<'\n';
             }
         }
     }

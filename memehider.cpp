@@ -23,12 +23,15 @@ int main(){
                 meme1.at<Vec3b>(j, i).val[k]>>=4;
                 meme1.at<Vec3b>(j, i).val[k]<<=4;
                 meme2.at<Vec3b>(j, i).val[k]>>=4;
+                assert(meme2.at<Vec3b>(j, i).val[k]<16);
+                // cout<<(ll)meme1.at<Vec3b>(j, i).val[k]<<'\n';
+                assert(meme1.at<Vec3b>(j, i).val[k]>=16||meme1.at<Vec3b>(j, i).val[k]==0);
                 meme1.at<Vec3b>(j, i).val[k]|=meme2.at<Vec3b>(j, i).val[k];
             }
         }
     }
 
-    if (!imwrite("data/hiddenmeme.jpg", meme1)){
+    if (!imwrite("data/hiddenmeme.png", meme1)){
         cout << "Failed to save the hidden meme" << '\n';
         return -1;
     }
