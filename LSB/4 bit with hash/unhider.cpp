@@ -4,11 +4,11 @@
 using namespace cv;
 
 int main(){
-    Mat meme = imread("data/hiddenmeme.png");
+    Mat image = imread("data/hiddenimage.png");
     vector <int> a(16);
     ifstream invhash("invhash");
-    if (meme.empty()){
-        cout << "Go hide the meme first before unhiding it" << '\n';
+    if (image.empty()){
+        cout << "Go hide the image first before unhiding it" << '\n';
         return -1;
     }
 
@@ -17,25 +17,25 @@ int main(){
     f(i,16){
         invhash>>a[i];
     }
-    f(i,meme.cols){
-        f(j,meme.rows){
+    f(i,image.cols){
+        f(j,image.rows){
             f(k,3){
-                meme.at<Vec3b>(j, i).val[k]&=15;
-                meme.at<Vec3b>(j, i).val[k]=a[meme.at<Vec3b>(j, i).val[k]];
-                meme.at<Vec3b>(j, i).val[k]<<=4;
-                // cout<<(ll)meme.at<Vec3b>(j, i).val[k]<<'\n';
+                image.at<Vec3b>(j, i).val[k]&=15;
+                image.at<Vec3b>(j, i).val[k]=a[image.at<Vec3b>(j, i).val[k]];
+                image.at<Vec3b>(j, i).val[k]<<=4;
+                // cout<<(ll)image.at<Vec3b>(j, i).val[k]<<'\n';
             }
         }
     }
 
-    if (!imwrite("data/unhiddenmeme.jpg", meme)){
-        cout << "Failed to save the unhidden meme" << '\n';
+    if (!imwrite("data/unhiddenimage.jpg", image)){
+        cout << "Failed to save the unhidden image" << '\n';
         return -1;
     }
 
-    namedWindow("hidden meme");
-    imshow("hidden meme", meme);
+    namedWindow("hidden image");
+    imshow("hidden image", image);
     waitKey(0);
-    destroyWindow("hidden meme");
+    destroyWindow("hidden image");
     return 0;
 }

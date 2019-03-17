@@ -7,43 +7,43 @@ int main(){
     ifstream hash("hash");
     vector <int> a(16);
 
-    Mat meme1 = imread("data/meme1.jpeg"),meme2=imread("data/meme2.jpg");
+    Mat image1 = imread("data/image1.jpeg"),image2=imread("data/image2.jpg");
     
-    if (meme1.empty()||meme2.empty()){
-        cout << "Could not open or find the Meme" << '\n';
+    if (image1.empty()||image2.empty()){
+        cout << "Could not open or find the image" << '\n';
         return -1;
     }
 
-    Size size(meme1.cols,meme1.rows);
+    Size size(image1.cols,image1.rows);
 
-    resize(meme2,meme2,size); //resize meme2
+    resize(image2,image2,size); //resize image2
     
     // return 0;
     int i,j,k;
     f(i,16){
         hash>>a[i];
     }
-    f(i,meme1.cols){
-        f(j,meme1.rows){
+    f(i,image1.cols){
+        f(j,image1.rows){
             f(k,3){
-                meme1.at<Vec3b>(j, i).val[k]>>=4;
-                meme1.at<Vec3b>(j, i).val[k]<<=4;
-                meme2.at<Vec3b>(j, i).val[k]>>=4;
-                assert(meme2.at<Vec3b>(j, i).val[k]<16);
-                assert(meme1.at<Vec3b>(j, i).val[k]>=16||meme1.at<Vec3b>(j, i).val[k]==0);
-                meme1.at<Vec3b>(j, i).val[k]|=a[meme2.at<Vec3b>(j, i).val[k]];
+                image1.at<Vec3b>(j, i).val[k]>>=4;
+                image1.at<Vec3b>(j, i).val[k]<<=4;
+                image2.at<Vec3b>(j, i).val[k]>>=4;
+                assert(image2.at<Vec3b>(j, i).val[k]<16);
+                assert(image1.at<Vec3b>(j, i).val[k]>=16||image1.at<Vec3b>(j, i).val[k]==0);
+                image1.at<Vec3b>(j, i).val[k]|=a[image2.at<Vec3b>(j, i).val[k]];
             }
         }
     }
 
-    if (!imwrite("data/hiddenmeme.png", meme1)){
-        cout << "Failed to save the hidden meme" << '\n';
+    if (!imwrite("data/hiddenimage.png", image1)){
+        cout << "Failed to save the hidden image" << '\n';
         return -1;
     }
 
-    namedWindow("hidden meme 2 in meme 1");
-    imshow("hidden meme 2 in meme 1", meme1);
+    namedWindow("hidden image 2 in image 1");
+    imshow("hidden image 2 in image 1", image1);
     waitKey(0);
-    destroyWindow("hidden meme 2 in meme 1");
+    destroyWindow("hidden image 2 in image 1");
     return 0;
 }
