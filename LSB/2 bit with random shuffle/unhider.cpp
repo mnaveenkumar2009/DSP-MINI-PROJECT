@@ -34,13 +34,13 @@ int main(){
      f(i,image.cols*image.rows){
         f(k,3){
             if(i%4==0)
-                unhid.at<Vec3b>(i/(2*image.cols),(i%image.cols)/2).val[k]|=(image.at<Vec3b>(a[i]/image.cols,a[i]%image.cols).val[k]&3)<<6;
+                unhid.at<Vec3b>((i/(image.cols))/2,(i%image.cols)/2).val[k]|=(image.at<Vec3b>(a[i]/image.cols,a[i]%image.cols).val[k]&3)<<6;
             if(i%4==1)
-                unhid.at<Vec3b>(i/(2*image.cols),(i%image.cols)/2).val[k]|=(image.at<Vec3b>(a[i]/image.cols,a[i]%image.cols).val[k]&3)<<4;
+                unhid.at<Vec3b>((i/(image.cols))/2,(i%image.cols)/2).val[k]|=(image.at<Vec3b>(a[i]/image.cols,a[i]%image.cols).val[k]&3)<<4;
             if(i%4==2)
-                unhid.at<Vec3b>(i/(2*image.cols),(i%image.cols)/2).val[k]|=(image.at<Vec3b>(a[i]/image.cols,a[i]%image.cols).val[k]&3)<<2;
+                unhid.at<Vec3b>((i/(image.cols))/2,(i%image.cols)/2).val[k]|=(image.at<Vec3b>(a[i]/image.cols,a[i]%image.cols).val[k]&3)<<2;
             if(i%4==3)
-                unhid.at<Vec3b>(i/(2*image.cols),(i%image.cols)/2).val[k]|=(image.at<Vec3b>(a[i]/image.cols,a[i]%image.cols).val[k]&3);
+                unhid.at<Vec3b>((i/(image.cols))/2,(i%image.cols)/2).val[k]|=(image.at<Vec3b>(a[i]/image.cols,a[i]%image.cols).val[k]&3);
         }
     }
     if (!imwrite("data/unhiddenimage.jpg", unhid)){

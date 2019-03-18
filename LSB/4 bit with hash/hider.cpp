@@ -1,6 +1,6 @@
 #include <opencv2/opencv.hpp>
-#include "../../template.h"
-
+#include <bits/stdc++.h>
+using namespace std;
 using namespace cv;
 
 int main(){
@@ -18,14 +18,13 @@ int main(){
 
     resize(image2,image2,size); //resize image2
     
-    // return 0;
     int i,j,k;
-    f(i,16){
+    for(i=0;i<16;i++){
         hash>>a[i];
     }
-    f(i,image1.cols){
-        f(j,image1.rows){
-            f(k,3){
+    for(i=0;i<image1.cols;i++){
+        for(j=0;j<image1.rows;j++){
+            for(k=0;k<3;k++){
                 image1.at<Vec3b>(j, i).val[k]>>=4;
                 image1.at<Vec3b>(j, i).val[k]<<=4;
                 image2.at<Vec3b>(j, i).val[k]>>=4;

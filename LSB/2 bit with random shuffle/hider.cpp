@@ -33,13 +33,13 @@ int main(){
     f(i,image1.cols*image1.rows){
         f(k,3){
             if(i%4==0)
-                image1.at<Vec3b>(a[i]/image1.cols,a[i]%image1.cols).val[k]|=(image2.at<Vec3b>(i/(2*image1.cols),(i%image1.cols)/2).val[k]&0b11000000)>>6;
+                image1.at<Vec3b>(a[i]/image1.cols,a[i]%image1.cols).val[k]|=(image2.at<Vec3b>((i/(image1.cols))/2,(i%image1.cols)/2).val[k]&0b11000000)>>6;
             if(i%4==1)
-                image1.at<Vec3b>(a[i]/image1.cols,a[i]%image1.cols).val[k]|=(image2.at<Vec3b>(i/(2*image1.cols),(i%image1.cols)/2).val[k]&0b110000)>>4;
+                image1.at<Vec3b>(a[i]/image1.cols,a[i]%image1.cols).val[k]|=(image2.at<Vec3b>((i/(image1.cols))/2,(i%image1.cols)/2).val[k]&0b110000)>>4;
             if(i%4==2)
-                image1.at<Vec3b>(a[i]/image1.cols,a[i]%image1.cols).val[k]|=(image2.at<Vec3b>(i/(2*image1.cols),(i%image1.cols)/2).val[k]&0b1100)>>2;
+                image1.at<Vec3b>(a[i]/image1.cols,a[i]%image1.cols).val[k]|=(image2.at<Vec3b>((i/(image1.cols))/2,(i%image1.cols)/2).val[k]&0b1100)>>2;
             if(i%4==3)
-                image1.at<Vec3b>(a[i]/image1.cols,a[i]%image1.cols).val[k]|=image2.at<Vec3b>(i/(2*image1.cols),(i%image1.cols)/2).val[k]&0b11;
+                image1.at<Vec3b>(a[i]/image1.cols,a[i]%image1.cols).val[k]|=image2.at<Vec3b>((i/(image1.cols))/2,(i%image1.cols)/2).val[k]&0b11;
         }
     }
 
