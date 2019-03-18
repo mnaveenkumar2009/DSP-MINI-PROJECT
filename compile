@@ -1,2 +1,0 @@
-g++ -ggdb memehider.cpp -o memehider `pkg-config --cflags --libs opencv`
- g++ -ggdb memetest.cpp -o memetest `pkg-config --cflags --libs opencv`
