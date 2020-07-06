@@ -52,12 +52,12 @@ int dctTransform(int matrix[8][8])
                     dct[i][j]+= coef*matrix[k][l]*cos((2*k +1)*i*pi/(16))*cos((2*l+1)*j*pi/16);
         } 
     }  
-    // for (i = 0; i < m; i++) { 
-    //     for (j = 0; j < n; j++) { 
-    //         printf("%f\t", dct[i][j]); 
-    //     } 
-    //     printf("\n"); 
-    // } 
+    for (i = 0; i < m; i++) { 
+        for (j = 0; j < n; j++) { 
+            printf("%f\t", dct[i][j]); 
+        } 
+        printf("\n"); 
+    } 
     // dct[7][7]=256;
     cout<<'\n'; 
     idct(dct);
